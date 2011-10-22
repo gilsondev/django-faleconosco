@@ -4,3 +4,7 @@
 # Arquivos temporarios
 *.swp
 *.bkp
+*.~
+django_faleconosco.egg-info/
+build/
+dist/
