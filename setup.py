@@ -1,47 +1,43 @@
 # -*- coding: utf8 -*-
 
-from distutils.core import setup
+from setuptools import setup
 import os
-
-# Compile the list of packages available, because distutils doesn't have
-# an easy way to do this.
-packages, data_files = [], []
-root_dir = os.path.dirname(__file__)
-if root_dir:
-    os.chdir(root_dir)
-
-for dirpath, dirnames, filenames in os.walk('contato'):
-    # Ignore dirnames that start with '.'
-    for i, dirname in enumerate(dirnames):
-        if dirname.startswith('.'): del dirnames[i]
-    if '__init__.py' in filenames:
-        pkg = dirpath.replace(os.path.sep, '.')
-        if os.path.altsep:
-            pkg = pkg.replace(os.path.altsep, '.')
-        packages.append(pkg)
-    elif filenames:
-        prefix = dirpath[13:]
-        for f in filenames:
-            data_files.append(os.path.join(prefix, f))
-
-
+ 
+ 
+README_FILE = open('README.md')
+try:
+    LONG_DESCRIPTION = README_FILE.read()
+finally:
+    README_FILE.close()
+ 
+ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+DATA_DIR = os.path.join(ROOT_DIR, 'contato', 'templates')
+TEMPLATE_DATA = []
+for path, dirs, filenames in os.walk(DATA_DIR):
+    # Ignore directories that start with '.'
+    for i, dir in enumerate(dirs):
+        if dir.startswith('.'):
+            del dirs[i]
+    path = path[len(DATA_DIR) + 1:]
+    TEMPLATE_DATA.append(os.path.join('templates', path, '*.*'))
+    # Get files starting with '.' too (they are excluded from the *.* glob).
+    TEMPLATE_DATA.append(os.path.join('templates', path, '.*'))
+ 
+ 
 setup(name='django-faleconosco',
       version='1.0a',
-      description=u'Aplicativo que implementa a seção Fale Conosco do seu Site Portal, etc',
       author='Gilson Filho',
       author_email='contato@gilsondev.com',
-      url='https://github.com/gilsondev/django-faleconosco',
-      #download_url='http://www.bitbucket.org/ubernostrum/django-registration/get/v0.7.gz',
-      package_dir={'contato': 'contato'},
-      packages=packages,
-      package_data={'contato': data_files},
-      classifiers=['Development Status :: 4 - Beta',
-                   'Environment :: Web Environment',
-                   'Framework :: Django',
-                   'Intended Audience :: Developers',
-                   'License :: OSI Approved :: BSD License',
-                   'Operating System :: OS Independent',
-                   'Programming Language :: Python',
-                   'Topic :: Software Development :: Libraries :: Python Modules',
-                   'Topic :: Utilities'],
-        )
+      description=('Aplicação responsável pela seção Fale Conosco de sites, portais, blogs, etc.'),
+      long_description=LONG_DESCRIPTION,
+      packages=['contato'],
+      package_data={'contato': TEMPLATE_DATA},
+      classifiers=[
+          'Development Status :: 3 - Alpha',
+          'Environment :: Web Environment',
+          'Framework :: Django',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: MIT License',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python',
+          'Topic :: Software Development :: Libraries :: Python Modules'])
