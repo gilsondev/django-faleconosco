@@ -1,0 +1,11 @@
+README
+setup.py
+contato/__init__.py
+contato/forms.py
+contato/urls.py
+contato/utils.py
+contato/views.py
+django_faleconosco.egg-info/PKG-INFO
+django_faleconosco.egg-info/SOURCES.txt
+django_faleconosco.egg-info/dependency_links.txt
+django_faleconosco.egg-info/top_level.txt

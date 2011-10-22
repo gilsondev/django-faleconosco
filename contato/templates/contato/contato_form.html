@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block corpo %}
+    <div class="sixteen columns">
+        <h3>Contato</h3>
+        <p>
+            Diga o que deseja aqui em baixo, que iremos ler com toda a atenção necessária.
+        </p>
+
+        <div class="sixteen columns">
+            <form action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <label for="id_nome">
+                        {{ form.nome.label }} {{ form.nome }}
+                    </label>
+                    <label for="id_email">
+                        {{ form.email.label }} {{ form.email }}
+                    </label>
+                    <label for="id_assunto">
+                        {{ form.assunto.label }} {{ form.assunto }}
+                    </label>
+                    <label for="id_mensagem">
+                        {{ form.mensagem.label }} {{ form.mensagem }}
+                    </label>
+                </fieldset>
+                <input type="submit" value="Enviar" class="button">
+            </form>
+        </div>
+    </div>
+{% endblock corpo %}

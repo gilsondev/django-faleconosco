@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: django-faleconosco
+Version: 1.0a
+Summary: Aplicativo que implementa a seção Fale Conosco em um projeto para site, portal, blog, etc.
+Home-page: https://github.com/gilsondev/django-faleconosco
+Author: Gilson Filho
+Author-email: contato@gilsondev.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Development
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
