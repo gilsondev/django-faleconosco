@@ -70,3 +70,17 @@ Esse template nada mais é do que uma página que contém a mensagem de que o em
             <p><a href="{% url homepage %}">Voltar</a></p>
         </div>
     {% endblock corpo %}
+
+Template email.txt
+------------------
+
+Já esse template é o corpo do email que vai ser recebido pelo destinatário. Ele aceita somente textos. Abaixo está um exemplo::
+
+    Esse e-mail foi recebido do site Juquinhas.com:
+    
+    Nome: {{ nome }}
+    E-mail: {{ email }}
+
+    {{ mensagem }}
+
+Essas tags vão ser substituidas pelos valores dos campos do formulário.
