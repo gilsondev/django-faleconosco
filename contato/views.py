@@ -26,7 +26,7 @@ def form(request, template_name='contato/contato_form.html',
             mensagem.update(dict)
 
         # Enviando o email
-        enviar_email(email, settings.DEFAULT_FROM_EMAIL, nome,
+        enviar_email(settings.DEFAULT_FROM_EMAIL, email, nome,
             assunto, template_email, mensagem)
 
         # Mostra mensagem de sucesso
